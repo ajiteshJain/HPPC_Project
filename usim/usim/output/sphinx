@@ -1,0 +1,329 @@
+---------------------------------------------
+-- USIMM: the Utah SImulated Memory Module --
+--              Version: 1.3               --
+---------------------------------------------
+Initializing.
+Core 0: Input trace file /nethome/pnair6/ISCA2015/usimm_open_page_new/input/SPEC2006/sphinx : Addresses will have prefix 0
+Core 1: Input trace file /nethome/pnair6/ISCA2015/usimm_open_page_new/input/SPEC2006/sphinx : Addresses will have prefix 1
+Core 2: Input trace file /nethome/pnair6/ISCA2015/usimm_open_page_new/input/SPEC2006/sphinx : Addresses will have prefix 2
+Core 3: Input trace file /nethome/pnair6/ISCA2015/usimm_open_page_new/input/SPEC2006/sphinx : Addresses will have prefix 3
+Reading vi file: 8Gb_x8.vi	
+8 Chips per Rank
+Fragments: 1 of length 1760
+----------------------------------------------------------------------------------------
+------------------------
+- SIMULATOR PARAMETERS -
+------------------------
+
+-------------
+- PROCESSOR -
+-------------
+PROCESSOR_CLK_MULTIPLIER:        4
+ROBSIZE:                       160
+MAX_FETCH:                       4
+MAX_RETIRE:                      4
+PIPELINEDEPTH:                  10
+
+---------------
+- DRAM Config -
+---------------
+NUM_CHANNELS:                    2
+NUM_RANKS:                       2
+NUM_BANKS:                       8
+NUM_ROWS:                    65536
+NUM_COLUMNS:                   128
+
+---------------
+- DRAM Timing -
+---------------
+T_RCD:                          44
+T_RP:                           44
+T_CAS:                          44
+T_RC:                          156
+T_RAS:                         112
+T_RRD:                          20
+T_FAW:                         128
+T_WR:                           48
+T_WTR:                          24
+T_RTP:                          24
+T_CCD:                          16
+T_RFC:                        1760
+T_REFI:                      24960
+T_CWD:                          20
+T_RTRS:                          8
+T_PD_MIN:                       16
+T_XP:                           20
+T_XP_DLL:                       80
+T_DATA_TRANS:                   16
+
+---------------------------
+- DRAM Idd Specifications -
+---------------------------
+VDD:                        01.50
+IDD0:                       55.00
+IDD2P0:                     16.00
+IDD2P1:                     32.00
+IDD2N:                      28.00
+IDD3P:                      38.00
+IDD3N:                      38.00
+IDD4R:                      147.00
+IDD4W:                      118.00
+IDD5:                       155.00
+
+-------------------
+- DRAM Controller -
+-------------------
+WQ_CAPACITY:                    96
+RQ_CAPACITY:                   512
+ADDRESS_MAPPING:                 1
+WQ_LOOKUP_LATENCY:              10
+
+----------------------------------------------------------------------------------------
+Init Cache size=8388608 assoc=8
+Initialized OS for 4194304 pages
+Starting simulation.
+....................................................................................................	100 M
+....................................................................................................	200 M
+....................................................................................................	300 M
+....................................................................................................	400 M
+....................................................................................................	500 M
+....................................................................................................	600 M
+....................................................................................................	700 M
+....................................................................................................	800 M
+....................................................................................................	900 M
+....................................................................................................	1000 M--Billion
+....................................................................................................	1100 M
+....................................................................................................	1200 M
+....................................................................................................	1300 M
+....................................................................................................	1400 M
+....................................................................................................	1500 M
+....................................................................................................	1600 M
+....................................................................................................	1700 M
+....................................................................................................	1800 M
+....................................................................................................	1900 M
+....................................................................................................	2000 M--Billion
+....................................................................................................	2100 M
+....................................................................................................	2200 M
+....................................................................................................	2300 M
+....................................................................................................	2400 M
+....................................................................................................	2500 M
+....................................................................................................	2600 M
+....................................................................................................	2700 M
+....................................................................................................	2800 M
+....................................................................................................	2900 M
+....................................................................................................	3000 M--Billion
+....................................................................................................	3100 M
+....................................................................................................	3200 M
+....................................................................................................	3300 M
+....................................................................................................	3400 M
+....................................................................................................	3500 M
+....................................................................................................	3600 M
+....................................................................................................	3700 M
+....................................................................................................	3800 M
+....................................................................................................	3900 M
+....................................................................................................	4000 M--Billion
+..................................................Done with loop. Printing stats.
+Cycles 667367157
+Done: Core 0: Fetched 1014053811 : Committed 1014053811 : At time : 665201203
+Done: Core 1: Fetched 1014053811 : Committed 1014053811 : At time : 653790307
+Done: Core 2: Fetched 1014053811 : Committed 1014053811 : At time : 654082803
+Done: Core 3: Fetched 1014053811 : Committed 1014053811 : At time : 667367157
+
+USIMM_CYCLES          	 : 2640441470
+
+USIMM_INST            	 : 4056215244
+
+USIMM_ROBF_STALLS     	 : 0
+
+USIMM_ROBN_STALLS     	 : 0
+
+USIMM_WRQF_STALLS     	 : 0
+
+USIMM_WRQN_STALLS     	 : 0
+Num reads merged: 7306
+Num writes merged: 536
+==========================================================
+==========            LLC Statistics           ===========
+==========================================================
+Cache Configuration: 
+	Cache Size:     8192K
+	Line Size:      64B
+	Associativity:  8
+	Tot # Sets:     16384
+	Tot # Threads:  4
+
+Cache Statistics: 
+
+	1 Accesses: 51870592
+	1 Misses:   25778253
+	1 Hits:     26092339
+	1 MissRate 	 : 49.697241
+
+	2 Accesses: 4399376
+	2 Misses:   860141
+	2 Hits:     3539235
+	2 MissRate 	 : 19.551432
+
+Overall Cache stat:
+Overall_Accesses: 56269968
+Overall_Misses:   26638394
+Overall_Hits:     29631574
+Overall_MissRate 	 : 47.340340
+
+-------- Channel 0 Stats-----------
+Total Reads Serviced :          13572393
+Total Writes Serviced :         1571951
+Average Read Latency :          170.67781
+Average Read Queue Latency :    110.67781
+Average Write Latency :         4521.95091
+Average Write Queue Latency :   4457.95091
+Read Page Hit Rate :            0.61860
+Write Page Hit Rate :           -0.03072
+------------------------------------
+-------- Channel 1 Stats-----------
+Total Reads Serviced :          12200538
+Total Writes Serviced :         1480585
+Average Read Latency :          167.38689
+Average Read Queue Latency :    107.38689
+Average Write Latency :         3657.80024
+Average Write Queue Latency :   3593.80024
+Read Page Hit Rate :            0.61629
+Write Page Hit Rate :           0.02810
+------------------------------------
+
+#-----------------------------Simulated Cycles Break-Up-------------------------------------------
+Note:  1.(Read Cycles + Write Cycles + Read Other + Write Other) should add up to % cycles during which
+          the channel is busy. This should be the same for all Ranks on a Channel
+       2.(PRE_PDN_FAST + PRE_PDN_SLOW + ACT_PDN + ACT_STBY + PRE_STBY) should add up to 100%
+       3.Power Down means Clock Enable, CKE = 0. In Standby mode, CKE = 1
+#-------------------------------------------------------------------------------------------------
+Total Simulation Cycles                        667367157
+---------------------------------------------------------------
+
+Channel 0 Rank 0 Read Cycles(%)                0.17 # % cycles the Rank performed a Read
+Channel 0 Rank 0 Write Cycles(%)               0.02 # % cycles the Rank performed a Write
+Channel 0 Rank 0 Read Other(%)                 0.16 # % cycles other Ranks on the channel performed a Read
+Channel 0 Rank 0 Write Other(%)                0.02 # % cycles other Ranks on the channel performed a Write
+Channel 0 Rank 0 PRE_PDN_FAST(%)               0.00 # % cycles the Rank was in Fast Power Down and all Banks were Precharged
+Channel 0 Rank 0 PRE_PDN_SLOW(%)               0.00 # % cycles the Rank was in Slow Power Down and all Banks were Precharged
+Channel 0 Rank 0 ACT_PDN(%)                    0.00 # % cycles the Rank was in Active Power Down and atleast one Bank was Active
+Channel 0 Rank 0 ACT_STBY(%)                   0.93 # % cycles the Rank was in Standby and atleast one bank was Active
+Channel 0 Rank 0 PRE_STBY(%)                   0.07 # % cycles the Rank was in Standby and all Banks were Precharged
+---------------------------------------------------------------
+
+Channel 0 Rank 1 Read Cycles(%)                0.16 # % cycles the Rank performed a Read
+Channel 0 Rank 1 Write Cycles(%)               0.02 # % cycles the Rank performed a Write
+Channel 0 Rank 1 Read Other(%)                 0.17 # % cycles other Ranks on the channel performed a Read
+Channel 0 Rank 1 Write Other(%)                0.02 # % cycles other Ranks on the channel performed a Write
+Channel 0 Rank 1 PRE_PDN_FAST(%)               0.00 # % cycles the Rank was in Fast Power Down and all Banks were Precharged
+Channel 0 Rank 1 PRE_PDN_SLOW(%)               0.00 # % cycles the Rank was in Slow Power Down and all Banks were Precharged
+Channel 0 Rank 1 ACT_PDN(%)                    0.00 # % cycles the Rank was in Active Power Down and atleast one Bank was Active
+Channel 0 Rank 1 ACT_STBY(%)                   0.93 # % cycles the Rank was in Standby and atleast one bank was Active
+Channel 0 Rank 1 PRE_STBY(%)                   0.07 # % cycles the Rank was in Standby and all Banks were Precharged
+---------------------------------------------------------------
+
+Channel 1 Rank 0 Read Cycles(%)                0.14 # % cycles the Rank performed a Read
+Channel 1 Rank 0 Write Cycles(%)               0.02 # % cycles the Rank performed a Write
+Channel 1 Rank 0 Read Other(%)                 0.15 # % cycles other Ranks on the channel performed a Read
+Channel 1 Rank 0 Write Other(%)                0.02 # % cycles other Ranks on the channel performed a Write
+Channel 1 Rank 0 PRE_PDN_FAST(%)               0.00 # % cycles the Rank was in Fast Power Down and all Banks were Precharged
+Channel 1 Rank 0 PRE_PDN_SLOW(%)               0.00 # % cycles the Rank was in Slow Power Down and all Banks were Precharged
+Channel 1 Rank 0 ACT_PDN(%)                    0.00 # % cycles the Rank was in Active Power Down and atleast one Bank was Active
+Channel 1 Rank 0 ACT_STBY(%)                   0.93 # % cycles the Rank was in Standby and atleast one bank was Active
+Channel 1 Rank 0 PRE_STBY(%)                   0.07 # % cycles the Rank was in Standby and all Banks were Precharged
+---------------------------------------------------------------
+
+Channel 1 Rank 1 Read Cycles(%)                0.15 # % cycles the Rank performed a Read
+Channel 1 Rank 1 Write Cycles(%)               0.02 # % cycles the Rank performed a Write
+Channel 1 Rank 1 Read Other(%)                 0.14 # % cycles other Ranks on the channel performed a Read
+Channel 1 Rank 1 Write Other(%)                0.02 # % cycles other Ranks on the channel performed a Write
+Channel 1 Rank 1 PRE_PDN_FAST(%)               0.00 # % cycles the Rank was in Fast Power Down and all Banks were Precharged
+Channel 1 Rank 1 PRE_PDN_SLOW(%)               0.00 # % cycles the Rank was in Slow Power Down and all Banks were Precharged
+Channel 1 Rank 1 ACT_PDN(%)                    0.00 # % cycles the Rank was in Active Power Down and atleast one Bank was Active
+Channel 1 Rank 1 ACT_STBY(%)                   0.93 # % cycles the Rank was in Standby and atleast one bank was Active
+Channel 1 Rank 1 PRE_STBY(%)                   0.07 # % cycles the Rank was in Standby and all Banks were Precharged
+---------------------------------------------------------------
+
+
+#-------------------------------------- Power Stats ----------------------------------------------
+Note:  1. termRoth/termWoth is the power dissipated in the ODT resistors when Read/Writes terminate 
+          in other ranks on the same channel
+#-------------------------------------------------------------------------------------------------
+
+Channel 0 Rank 0 Background(mw)              55.93 # depends only on Power Down time and time all banks were precharged
+Channel 0 Rank 0 Act(mW)                     24.64 # power spend bringing data to the row buffer
+Channel 0 Rank 0 Read(mW)                    27.06 # power spent doing a Read  after the Row Buffer is open
+Channel 0 Rank 0 Write(mW)                    2.36 # power spent doing a Write after the Row Buffer is open
+Channel 0 Rank 0 Read Terminate(mW)           5.30 # power dissipated in ODT resistors during Read
+Channel 0 Rank 0 Write Terminate(mW)          0.00 # power dissipated in ODT resistors during Write
+Channel 0 Rank 0 termRoth(mW)                39.81 # power dissipated in ODT resistors during Reads  in other ranks
+Channel 0 Rank 0 termWoth(mW)                 4.12 # power dissipated in ODT resistors during Writes in other ranks
+Channel 0 Rank 0 Refresh(mW)                 12.38 # depends on frequency of Refresh (tREFI)
+---------------------------------------------------------------
+Channel 0 Rank 0 Total Rank Power(mW)      1372.77 # (Sum of above components)*(num chips in each Rank)
+---------------------------------------------------------------
+
+Channel 0 Rank 1 Background(mw)              55.93 # depends only on Power Down time and time all banks were precharged
+Channel 0 Rank 1 Act(mW)                     22.60 # power spend bringing data to the row buffer
+Channel 0 Rank 1 Read(mW)                    26.14 # power spent doing a Read  after the Row Buffer is open
+Channel 0 Rank 1 Write(mW)                    2.16 # power spent doing a Write after the Row Buffer is open
+Channel 0 Rank 1 Read Terminate(mW)           5.12 # power dissipated in ODT resistors during Read
+Channel 0 Rank 1 Write Terminate(mW)          0.00 # power dissipated in ODT resistors during Write
+Channel 0 Rank 1 termRoth(mW)                41.22 # power dissipated in ODT resistors during Reads  in other ranks
+Channel 0 Rank 1 termWoth(mW)                 4.50 # power dissipated in ODT resistors during Writes in other ranks
+Channel 0 Rank 1 Refresh(mW)                 12.38 # depends on frequency of Refresh (tREFI)
+---------------------------------------------------------------
+Channel 0 Rank 1 Total Rank Power(mW)      1360.28 # (Sum of above components)*(num chips in each Rank)
+---------------------------------------------------------------
+
+Channel 1 Rank 0 Background(mw)              55.93 # depends only on Power Down time and time all banks were precharged
+Channel 1 Rank 0 Act(mW)                     20.63 # power spend bringing data to the row buffer
+Channel 1 Rank 0 Read(mW)                    23.57 # power spent doing a Read  after the Row Buffer is open
+Channel 1 Rank 0 Write(mW)                    2.16 # power spent doing a Write after the Row Buffer is open
+Channel 1 Rank 0 Read Terminate(mW)           4.61 # power dissipated in ODT resistors during Read
+Channel 1 Rank 0 Write Terminate(mW)          0.00 # power dissipated in ODT resistors during Write
+Channel 1 Rank 0 termRoth(mW)                36.94 # power dissipated in ODT resistors during Reads  in other ranks
+Channel 1 Rank 0 termWoth(mW)                 4.01 # power dissipated in ODT resistors during Writes in other ranks
+Channel 1 Rank 0 Refresh(mW)                 12.38 # depends on frequency of Refresh (tREFI)
+---------------------------------------------------------------
+Channel 1 Rank 0 Total Rank Power(mW)      1281.78 # (Sum of above components)*(num chips in each Rank)
+---------------------------------------------------------------
+
+Channel 1 Rank 1 Background(mw)              55.92 # depends only on Power Down time and time all banks were precharged
+Channel 1 Rank 1 Act(mW)                     21.90 # power spend bringing data to the row buffer
+Channel 1 Rank 1 Read(mW)                    24.25 # power spent doing a Read  after the Row Buffer is open
+Channel 1 Rank 1 Write(mW)                    2.10 # power spent doing a Write after the Row Buffer is open
+Channel 1 Rank 1 Read Terminate(mW)           4.75 # power dissipated in ODT resistors during Read
+Channel 1 Rank 1 Write Terminate(mW)          0.00 # power dissipated in ODT resistors during Write
+Channel 1 Rank 1 termRoth(mW)                35.90 # power dissipated in ODT resistors during Reads  in other ranks
+Channel 1 Rank 1 termWoth(mW)                 4.11 # power dissipated in ODT resistors during Writes in other ranks
+Channel 1 Rank 1 Refresh(mW)                 12.38 # depends on frequency of Refresh (tREFI)
+---------------------------------------------------------------
+Channel 1 Rank 1 Total Rank Power(mW)      1290.50 # (Sum of above components)*(num chips in each Rank)
+---------------------------------------------------------------
+
+
+#-------------------CITADEL POWER STATS----------------------------------------------------------------
+
+USIMM_BCK            	 : 0.000
+
+USIMM_ACT            	 : 0.000
+
+USIMM_RD             	 : 0.000
+
+USIMM_WR             	 : 0.000
+
+USIMM_RDT            	 : 0.000
+
+USIMM_WRT            	 : 0.000
+
+USIMM_REF            	 : 0.000
+
+USIMM_RNK            	 : 0.000
+
+#-------------------ORIGINAL POWER STATS----------------------------------------------------------------
+Total memory system power = 5.305326 W
+Miscellaneous system power = 10 W  # Processor uncore power, disk, I/O, cooling, etc.
+Processor core power = 39.565048 W  # Assuming that each core consumes 5 W
+Total system power = 54.870373 W # Sum of the previous three lines
+Energy Delay product (EDP) = 2.386533976 J.s
