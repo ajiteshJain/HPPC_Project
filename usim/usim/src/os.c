@@ -61,7 +61,7 @@ uns64 os_vpn_to_pfn(OS *os, uns64 vpn, uns tid, Flag *hit)
     pte = (PageTableEntry *) hash_table_access_create(pt->entries, vpn, &first_access);
 
     if(first_access){
-	pte->pfn = os_get_victim_from_ipt(os);
+	pte->pfn = os_get_victim_from_ipt(os, tid);
 	ipte = &ipt->entries[ pte->pfn ]; 
 	ipte->valid = TRUE;
 	ipte->dirty = FALSE;
@@ -84,21 +84,25 @@ uns64 os_vpn_to_pfn(OS *os, uns64 vpn, uns tid, Flag *hit)
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-uns64    os_get_victim_from_ipt(OS *os)
+uns64    os_get_victim_from_ipt(OS *os, uns tid)
 {
     PageTable *pt = os->pt;
     InvPageTable *ipt = os->ipt;
-    uns64 ptr = ipt->refptr;
-    uns max = ipt->num_entries;
     Flag found=FALSE;
     uns64 victim=0;
     uns random_invalid_tries=OS_NUM_RND_TRIES;
     uns tries=0;
     tries=tries; // To avoid warning
     random_invalid_tries=random_invalid_tries; //To avoid warning
-    // try random invalid first
+
+    uns64 numPagesPerThread = os->num_pages / os->num_threads;
+    uns64 startPageNumber = tid * numPagesPerThread;
+    uns64 ptr = startPageNumber;
+    uns64 count = 0; 
+
+   // try random invalid first
     while( tries < random_invalid_tries){
-	victim = rand()%max;
+	victim = startPageNumber + rand() % numPagesPerThread;
 	if(! ipt->entries[victim].valid ){
 	    found = TRUE;
 	    break;
@@ -118,8 +122,7 @@ uns64    os_get_victim_from_ipt(OS *os)
 	    ipt->entries[ptr].ref = FALSE;
 	  }
 	  victim = ptr;
-	  ipt->refptr = (ptr+1)%max;
-	  ptr = ipt->refptr;
+	  ptr = startPageNumber + (++count) % numPagesPerThread;
     }
     // update page writeback information
     if( ipt->entries[victim].valid){

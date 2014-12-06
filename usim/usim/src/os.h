@@ -45,7 +45,6 @@ struct InvPageTableEntry{
 struct InvPageTable{
   InvPageTableEntry  *entries;
   uns64          num_entries;
-  uns64          refptr;
 };
 
 
@@ -71,7 +70,7 @@ OS*     os_new(uns64 num_pages, uns num_threads);
 uns64     os_vpn_to_pfn(OS *os, uns64 vpn, uns tid, Flag *hit);
 void    os_print_stats(OS *os);
 
-uns64     os_get_victim_from_ipt(OS *os);
+uns64     os_get_victim_from_ipt(OS *os, uns tid);
 Addr    os_v2p_lineaddr(OS *os, Addr lineaddr, uns tid);
 
 //////////////////////////////////////////////////////////////////////////
