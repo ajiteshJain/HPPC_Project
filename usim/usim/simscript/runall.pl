@@ -2,7 +2,7 @@
 
 require ( "./bench_common.pl");
 
-$trace_dir = "/nethome/pnair6/ISCA2015/usimm_open_page_new/";
+$trace_dir = "~/HPPC_Project/usim/usim/";
 
 
 #####################################

@@ -27,6 +27,13 @@ input/hmc.cfg input/SPEC2006/bzip2 input/SPEC2006/bzip2 input/SPEC2006/bzip2 inp
 input/hmc.cfg input/SPEC2006/dealII input/SPEC2006/dealII input/SPEC2006/dealII input/SPEC2006/dealII
 input/hmc.cfg input/SPEC2006/xalancbmk input/SPEC2006/xalancbmk input/SPEC2006/xalancbmk input/SPEC2006/xalancbmk';
 
+$SUITES{'hppc_prj'} =
+'input/hmc.cfg input/threads/t0 input/threads/t1 input/threads/t2 input/threads/t3 input/threads/t4 input/threads/t5 input/threads/t6 input/threads/t7 input/threads/t8 input/threads/t9 input/threads/t10 input/threads/t11 input/threads/t12 input/threads/t13 input/threads/t14 input/threads/t15';
+
+$SUITES{'hppc_prj_name'} =
+'thread';
+
+
 $SUITES{'spec2006_hmpki_name'}      = 
 'mcf
 lbm
