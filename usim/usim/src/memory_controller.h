@@ -1,8 +1,8 @@
 #ifndef __MEMORY_CONTROLLER_H__
 #define __MEMORY_CONTROLLER_H__
 
-#define MAX_NUM_CHANNELS 8
-#define MAX_NUM_RANKS 2
+#define MAX_NUM_CHANNELS 16
+#define MAX_NUM_RANKS 1
 #define MAX_NUM_BANKS 8
 
 // Moved here from main.c 
