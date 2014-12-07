@@ -16,13 +16,13 @@ typedef struct VirtualPhysicalPair VirtualPhysicalPair;
 
 
 struct PageTableEntry{
-    uns  pfn;
+    uns64  pfn;
 };
 
 
 struct VirtualPhysicalPair{
-  uns vpn;
-  uns pfn;
+  uns64 vpn;
+  uns64 pfn;
 };
 
 
@@ -39,13 +39,12 @@ struct InvPageTableEntry{
     Flag valid;
     Flag dirty;
     Flag ref;
-    uns  vpn;
+    uns64  vpn;
 };
 
 struct InvPageTable{
   InvPageTableEntry  *entries;
-  uns          num_entries;
-  uns          refptr;
+  uns64          num_entries;
 };
 
 
@@ -67,11 +66,11 @@ struct OS {
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
-OS*     os_new(uns num_pages, uns num_threads);
-uns     os_vpn_to_pfn(OS *os, uns vpn, uns tid, Flag *hit);
+OS*     os_new(uns64 num_pages, uns num_threads);
+uns64     os_vpn_to_pfn(OS *os, uns64 vpn, uns tid, Flag *hit);
 void    os_print_stats(OS *os);
 
-uns     os_get_victim_from_ipt(OS *os);
+uns64     os_get_victim_from_ipt(OS *os, uns tid);
 Addr    os_v2p_lineaddr(OS *os, Addr lineaddr, uns tid);
 
 //////////////////////////////////////////////////////////////////////////

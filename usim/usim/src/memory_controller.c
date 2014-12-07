@@ -214,12 +214,6 @@ dram_address_t * calc_dram_addr(long long int physical_address)
 		this_a->column = temp_a ^ temp_b;		//strip out the column address
 		
 
-		temp_b = input_a;   				
-		input_a = input_a >> channelBitWidth;
-		temp_a  = input_a << channelBitWidth;
-		this_a->channel = temp_a ^ temp_b; 		// strip out the channel address
-
-
 		temp_b = input_a;				
 		input_a = input_a >> bankBitWidth;
 		temp_a  = input_a << bankBitWidth;
@@ -236,6 +230,12 @@ dram_address_t * calc_dram_addr(long long int physical_address)
 		input_a = input_a >> rowBitWidth;
 		temp_a  = input_a << rowBitWidth;
 		this_a->row = temp_a ^ temp_b;		// strip out the row number
+
+
+		temp_b = input_a;   				
+		input_a = input_a >> channelBitWidth;
+		temp_a  = input_a << channelBitWidth;
+		this_a->channel = temp_a ^ temp_b; 		// strip out the channel address
 	}
 	else
 	{

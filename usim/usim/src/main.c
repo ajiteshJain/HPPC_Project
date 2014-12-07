@@ -341,7 +341,7 @@ int main(int argc, char * argv[])
 	  ROB[i].instrpc = (long long int*)malloc(sizeof(long long int)*ROBSIZE);
 	  ROB[i].optype = (int*)malloc(sizeof(int)*ROBSIZE);
   }
-  CACHE_SIZE = 1024*8192;//4MB LLC (SHARED)
+  CACHE_SIZE = 1024;// LLC (SHARED)
 
   construct_cache(L3Cache, CACHE_SIZE, 8, NUMCORES, 64);
   os_pages = ((((unsigned long long int)1)<<ADDRESS_BITS)>>12); //4KB page size and covering the address space

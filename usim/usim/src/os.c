@@ -14,7 +14,7 @@
 #define OS_NUM_RND_TRIES 1
 extern int config_param;
 
-OS *os_new(uns num_pages, uns num_threads)
+OS *os_new(uns64 num_pages, uns num_threads)
 {
     OS *os = (OS *) calloc (1, sizeof (OS));
 
@@ -33,7 +33,7 @@ OS *os_new(uns num_pages, uns num_threads)
     assert(os->pt->entries);
     assert(os->ipt->entries);
 
-    printf("Initialized OS for %u pages\n", num_pages);
+    printf("Initialized OS for %llu pages\n", num_pages);
 
     return os;
 }
@@ -41,7 +41,7 @@ OS *os_new(uns num_pages, uns num_threads)
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-uns os_vpn_to_pfn(OS *os, uns vpn, uns tid, Flag *hit)
+uns64 os_vpn_to_pfn(OS *os, uns64 vpn, uns tid, Flag *hit)
 {
     Flag first_access;
     PageTable *pt = os->pt;
@@ -50,8 +50,9 @@ uns os_vpn_to_pfn(OS *os, uns vpn, uns tid, Flag *hit)
     InvPageTableEntry *ipte;
     *hit = TRUE;
 
-    assert(vpn>>28 == 0);
-    vpn = (tid<<28)+vpn; // embed tid information in high bits
+    assert(vpn>>ADDRESS_BITS == 0);
+    uns64 threadId = tid;
+    vpn = (threadId<<ADDRESS_BITS)+vpn; // embed tid information in high bits
     
     if( pt->last_xlation[tid].vpn == vpn ){
 	return pt->last_xlation[tid].pfn;
@@ -60,7 +61,7 @@ uns os_vpn_to_pfn(OS *os, uns vpn, uns tid, Flag *hit)
     pte = (PageTableEntry *) hash_table_access_create(pt->entries, vpn, &first_access);
 
     if(first_access){
-	pte->pfn = os_get_victim_from_ipt(os);
+	pte->pfn = os_get_victim_from_ipt(os, tid);
 	ipte = &ipt->entries[ pte->pfn ]; 
 	ipte->valid = TRUE;
 	ipte->dirty = FALSE;
@@ -83,21 +84,25 @@ uns os_vpn_to_pfn(OS *os, uns vpn, uns tid, Flag *hit)
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
 
-uns    os_get_victim_from_ipt(OS *os)
+uns64    os_get_victim_from_ipt(OS *os, uns tid)
 {
     PageTable *pt = os->pt;
     InvPageTable *ipt = os->ipt;
-    uns ptr = ipt->refptr;
-    uns max = ipt->num_entries;
     Flag found=FALSE;
-    uns victim=0;
+    uns64 victim=0;
     uns random_invalid_tries=OS_NUM_RND_TRIES;
     uns tries=0;
     tries=tries; // To avoid warning
     random_invalid_tries=random_invalid_tries; //To avoid warning
-    // try random invalid first
+
+    uns64 numPagesPerThread = os->num_pages / os->num_threads;
+    uns64 startPageNumber = tid * numPagesPerThread;
+    uns64 ptr = startPageNumber;
+    uns64 count = 0; 
+
+   // try random invalid first
     while( tries < random_invalid_tries){
-	victim = rand()%max;
+	victim = startPageNumber + rand() % numPagesPerThread;
 	if(! ipt->entries[victim].valid ){
 	    found = TRUE;
 	    break;
@@ -117,8 +122,7 @@ uns    os_get_victim_from_ipt(OS *os)
 	    ipt->entries[ptr].ref = FALSE;
 	  }
 	  victim = ptr;
-	  ipt->refptr = (ptr+1)%max;
-	  ptr = ipt->refptr;
+	  ptr = startPageNumber + (++count) % numPagesPerThread;
     }
     // update page writeback information
     if( ipt->entries[victim].valid){
@@ -149,10 +153,10 @@ void os_print_stats(OS *os)
 ////////////////////////////////////////////////////////////
 
 Addr os_v2p_lineaddr(OS *os, Addr lineaddr, uns tid){
-  uns vpn = lineaddr/os->lines_in_page;
+  uns64 vpn = lineaddr/os->lines_in_page;
   uns lineid = lineaddr%os->lines_in_page;
   Flag pagehit;
-  uns pfn = os_vpn_to_pfn(os, vpn, tid, &pagehit);
+  uns64 pfn = os_vpn_to_pfn(os, vpn, tid, &pagehit);
   Addr retval = (pfn*os->lines_in_page)+lineid;
   return retval;
 }
